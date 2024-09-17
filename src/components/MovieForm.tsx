@@ -58,7 +58,7 @@ const MovieForm = ({createMovie}: MovieFormProps) => {
             <input type="text" className="text-slate-900" placeholder='Director' value={director} onChange={handleDirector}/>
             Score
             <input type="text" className="text-slate-900" placeholder='Score' value={score} onChange={handleMovieScore}/>  
-            <button type="button" onClick={(event) => handleFormSubmit(event)}>Add Movie</button>
+            <button className="mt-2 bg-slate-500 p-2 rounded-xl" type="button" onClick={(event) => handleFormSubmit(event)}>Add Movie</button>
         </form>
         : 
         <div className="flex justify-center bg-slate-800 mx-auto p-8 max-w-min rounded-xl" onClick={() => setAddToggle(!addToggle)}>

@@ -27,11 +27,13 @@ function App() {
   const [movieList, setMovieList] = useState<Movie[]>([]);
 
   return (
-    <div className="h-screen w-screen bg-slate-950">
+    <div className="max-h-screen h-screen w-screen bg-slate-950 flex flex-col">
       <MovieForm createMovie={createMovie}/>
+      <div className="overflow-auto mt-8 flex-1 mb-8">
       {movieList.map((movie, i) => {
         return <Movie name={movie.name} year={movie.year} director={movie.director} score={movie.score}/>
       })}
+      </div>
     </div>
   );
 }
