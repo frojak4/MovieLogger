@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MovieForm from './components/MovieForm';
+import Movie from './components/Movie';
 
 function App() {
+
+  type Movie = {
+    name: string;
+    year: number;
+    director: string;
+    score: number;
+  }
+
+  const createMovie = (name: string, year: number, director: string, score: number): void => {
+    let newMovie: Movie = {
+      name: name,
+      year: year, 
+      director: director,
+      score: score
+    }
+    setMovieList(prev => [...prev, newMovie])
+  }
+
+
+  const [movieList, setMovieList] = useState<Movie[]>([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-screen w-screen bg-slate-950">
+      <MovieForm createMovie={createMovie}/>
+      {movieList.map((movie, i) => {
+        return <Movie name={movie.name} year={movie.year} director={movie.director} score={movie.score}/>
+      })}
     </div>
   );
 }
